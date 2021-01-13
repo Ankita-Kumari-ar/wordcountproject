@@ -1,0 +1,29 @@
+{% load widget_tweaks %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>WordCount</title>
+        <link href="{% static 'wordcount/styles.css' %}" rel="stylesheet" >
+    </head>
+    <body class="Parent">
+        <marquee><h2>--..--..--  Welcome To WordCount  --..--..--</h2></marquee>
+        <h1>WORDCOUNT</h1>
+        <div align="center">
+            <h3>Write the text in the box</h3>
+            <form action ="{% url 'wordcount:countword' %}" method="post">
+                {% csrf_token %}
+                <table border="1">
+                    {{ form }}
+                </table>
+                <input type="submit" align="center">
+            </form>
+        </div>
+        <br>
+        <div align="center">
+            <h3>Number of words in the text: </h3>
+            <h2 class="cnt">{{ count }}</h2>
+        </div>
+        <br>
+    </body>
+</html>
